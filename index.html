@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .alert {
+        color: red;
+        background-color: lightcoral;
+        padding: 10px;
+      }
+      .text-danger {
+        color: red;
+        font-weight: bold;
+        padding: 10px 0px;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="welcome">DELOITTE</h2>
+    <div class="chapter">
+      <button id="clickButton">click</button>
+    </div>
+    <div id="parainsert">dont click</div>
+    <p class="text-danger">secret above</p>
+    <form onsubmit="return submitForm()" name="formname">
+      <input type="text" id="firstname" placeholder="enter first name" />
+      <input type="text" id="lastname" placeholder="enter last name" />
+      <input type="text" id="age" placeholder="enter age" />
+      <input type="submit" value="submit" />
+    </form>
+    <script>
+      document.getElementById("welcome").style.color = "green";
+      document.getElementById("welcome").style.textAlign = "center";
+      const button = document.getElementById("clickButton");
+      button.addEventListener("click", myfun);
+      console.log(button.closest(".chapter"));
+      function myfun() {
+        const element = document.createElement("p");
+        element.classList.add("alert");
+        element.innerHTML = "<strong>Hi there!</strong> I'm Batman";
+        document.getElementById("parainsert").appendChild(element);
+        button.disabled = true;
+        setTimeout(() => {
+          element.remove();
+          button.disabled = false;
+        }, 2000);
+      }
+      function submitForm() {
+       
+        return false;
+      }
+    </script>
+  </body>
+</html>
